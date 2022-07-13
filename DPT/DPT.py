@@ -338,7 +338,7 @@ class DPTSegmentationModel(DPT):
 
         backbone_dict = {"vitb_hybrid": "vitb_rn50_384",
             'vitb':"vitb16_384",
-            'vitb':"vitb16_224",
+            'vitb16_224':"vitb16_224",
             'deit':'deitb16_384',
             'deit_distilled':'deitb16_distil_384',
             'vitl':"vitl16_384",
