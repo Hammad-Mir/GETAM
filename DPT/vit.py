@@ -543,6 +543,21 @@ def _make_pretrained_vitb16_384(
         enable_attention_hooks=enable_attention_hooks,
     )
 
+def _make_pretrained_vitb16_224(
+    pretrained, use_readout="ignore", hooks=None, enable_attention_hooks=False
+):
+    model = create_model("vit_base_patch16_224", pretrained=pretrained)
+
+    hooks = [2, 5, 8, 11] if hooks == None else hooks
+    return _make_vit_b16_backbone(
+        model,
+        features=[96, 192, 384, 768],
+        hooks=hooks,
+        size=[224, 224],
+        use_readout=use_readout,
+        enable_attention_hooks=enable_attention_hooks,
+    )
+
 
 def _make_pretrained_deitb16_384(
     pretrained, use_readout="ignore", hooks=None, enable_attention_hooks=False

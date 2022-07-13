@@ -180,7 +180,7 @@ class DPT(BaseModel):
         self,
         head,
         features=256,
-        backbone='vitb_rn50_384',
+        backbone='vitb16_224',
         readout="project",
         channels_last=False,
         use_bn=False,
@@ -197,6 +197,7 @@ class DPT(BaseModel):
         hooks = {
             "vitb_rn50_384": [0, 1, 8, 11],
             "vitb16_384": [2, 5, 8, 11],
+            "vitb16_224": [2, 5, 8, 11],
             'deitb16_384': [2,5,8,11],
             'deitb16_distil_384':[2,5,8,11],
             "vitl16_384": [5, 11, 17, 23],

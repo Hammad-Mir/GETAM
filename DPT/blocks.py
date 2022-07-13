@@ -5,6 +5,7 @@ from DPT.vit import (
     _make_pretrained_vitb_rn50_384,
     _make_pretrained_vitl16_384,
     _make_pretrained_vitb16_384,
+    _make_pretrained_vitb16_224,
     _make_pretrained_deitb16_384,
     _make_pretrained_deitb16_distil_384,
     forward_vit,
@@ -46,6 +47,17 @@ def _make_encoder(
         )  # ViT-H/16 - 85.0% Top1 (backbone)
     elif backbone == "vitb16_384":
         pretrained = _make_pretrained_vitb16_384(
+            use_pretrained,
+            hooks=hooks,
+            use_readout=use_readout,
+            enable_attention_hooks=enable_attention_hooks,
+        )
+        scratch = _make_scratch(
+            [96, 192, 384, 768], features, groups=groups, expand=expand
+        )  # ViT-B/16 - 84.6% Top1 (backbone)
+
+    elif backbone == "vitb16_224":
+        pretrained = _make_pretrained_vitb16_224(
             use_pretrained,
             hooks=hooks,
             use_readout=use_readout,
